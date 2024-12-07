@@ -17,7 +17,7 @@
         -:   13:
         1:   14:int main(int argc, char *argv[]) {
         1:   15:    int vertices = 0, edges = 0, seed = time(nullptr); // Default seed is current time
-        -:   16:    int opt;
+        1:   16:    int opt;
         -:   17:
         -:   18:    // Parse command-line arguments
         4:   19:    while ((opt = getopt(argc, argv, "v:e:s:")) != -1) {
@@ -33,7 +33,7 @@
         1:   29:                break;
     #####:   30:            default:
     #####:   31:                printUsage(argv[0]);
-    #####:   32:                return 1;
+        -:   32:                return 1;
         -:   33:        }
         -:   34:    }
         -:   35:    // in case of missing arguments or invalid values
@@ -46,14 +46,14 @@
         1:   42:    std::srand(seed);
         -:   43:
         -:   44:    // Create a graph with the specified number of vertices
-        1:   45:    Graph graph(vertices);
+        2:   45:    Graph graph(vertices);
         -:   46:
         -:   47:    // Generate random edges
         7:   48:    for (int i = 0; i < edges; ++i) {
         6:   49:        int u = std::rand() % vertices;
         6:   50:        int v = std::rand() % vertices;
-        6:   51:        while (v == u) { // Avoid self-loops
-    #####:   52:            v = std::rand() % vertices;
+       10:   51:        while (v == u) { // Avoid self-loops
+        4:   52:            v = std::rand() % vertices;
         -:   53:        }
         6:   54:        graph.addEdge(u, v);
         -:   55:    }
