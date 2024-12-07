@@ -7,19 +7,19 @@ CXXFLAGS = -Wall -pg #-Wall is to show all warnings, -pg is for profiling
 CCOVFLAGS = -g -fprofile-arcs -ftest-coverage -Og # -g is for debugging, -fprofile-arcs is for profiling, -ftest-coverage is for coverage, -Og is for optimization
 
 # Files
-SRC = hello.c
-TARGET = hello
+SRC = race.c
+TARGET = race
 
 # Default target: Compile the program
-all: hello
+all: race
 
-hello: hello.o
-	$(CXX) $(CXXFLAGS) $(CCOVFLAGS) -o $(TARGET) hello.o
+race: race.o
+	$(CXX) $(CXXFLAGS) $(CCOVFLAGS) -o $(TARGET) race.o
 
 #init .o files
-hello.o: hello.c
-	$(CXX) $(CXXFLAGS) $(CCOVFLAGS) -c hello.c
+race.o: race.c
+	$(CXX) $(CXXFLAGS) $(CCOVFLAGS) -c race.c
 
 # Clean build files
 clean:
-	rm -f hello  *.gcda *.gcno *.o gmon.out
+	rm -f race  *.gcda *.gcno *.o gmon.out
